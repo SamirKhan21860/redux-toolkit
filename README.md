@@ -1,2 +1,2 @@
-# readux-toolkit
+# redux-toolkit
 React Redux For practicing purposes
