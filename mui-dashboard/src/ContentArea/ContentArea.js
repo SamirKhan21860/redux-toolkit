@@ -1,11 +1,9 @@
 import React from "react";
-import Grid from "@mui/material/Grid";
-import { Typography } from "@mui/material";
-import Paper from "@mui/material/Paper"
+import { Typography, Grid, Paper } from "@mui/material";
 
 const ContentArea = () => {
   return <Grid container spacing={2}>
-    <Paper>
+    <Paper elevation={3}>
         <Typography variant="h6">Paper</Typography>
     </Paper>
   </Grid>;
