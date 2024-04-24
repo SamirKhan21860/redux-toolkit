@@ -1,8 +1,9 @@
 import React from "react";
 import { AppBar, Toolbar, Typography, Drawer, IconButton } from "@mui/material";
 import Sidebar from "../../Sidebar/Sidebar";
-import MenuIcon from '@mui/icons-material/Menu';
-import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
+import MenuIcon from "@mui/icons-material/Menu";
+import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
+import ContentArea from "../../ContentArea/ContentArea";
 
 const DashboardLayout = () => {
   const [open, setOpen] = React.useState(false);
@@ -23,14 +24,17 @@ const DashboardLayout = () => {
             Dashboard
           </Typography>
           <IconButton onClick={handleDrawerOpen} size="large" edge="start">
-            <MenuIcon/>
+            <MenuIcon />
           </IconButton>
         </Toolbar>
-        <Drawer anchor="left" open={open} onClose={handleDrawerClose}>
-          <Sidebar />
-          <NavigateBeforeIcon onClick={handleDrawerClose}/>
-        </Drawer>
       </AppBar>
+      <Drawer anchor="left" open={open} onClose={handleDrawerClose}>
+        <Sidebar />
+        <NavigateBeforeIcon onClick={handleDrawerClose} />
+      </Drawer>
+      <main>
+        <ContentArea />
+      </main>
     </div>
   );
 };
