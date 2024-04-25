@@ -25,6 +25,7 @@ import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
 import ContentArea from "../ContentArea/ContentArea";
 import Deposits from "../Deposits/Deposits";
+import Orders from "../Orders/Orders";
 const Copyright = (props) => {
   return (
     <Typography variant="body2" color="text.secondary" {...props}>
@@ -38,11 +39,11 @@ const Copyright = (props) => {
   );
 };
 
-// const AppBar = styled();
+const AppBar = styled();
 
-// const Drawer = styled();
+const Drawer = styled();
 
-// const drawerWidth = 240;
+const drawerWidth = 240;
 
 const defaultTheme = createTheme();
 
@@ -143,7 +144,19 @@ const DashboardLayout = () => {
                   <Deposits />
                 </Paper>
               </Grid>
+              <Grid item xs={12}>
+                <Paper
+                  sx={{
+                    p: 2,
+                    display: "flex",
+                    flexDirection: "column"
+                  }}
+                >
+                  <Orders />
+                </Paper>
+              </Grid>
             </Grid>
+            <Copyright sx={{ pt: 4}} />
           </Container>
         </Box>
       </Box>
