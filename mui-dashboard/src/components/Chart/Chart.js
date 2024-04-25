@@ -3,24 +3,24 @@ import { useTheme } from "@mui/material/styles";
 import Title from "../Title/Title";
 import { LineChart, axisClasses } from "@mui/x-charts";
 
+function createData(time, amount) {
+  return { time, amount: amount ?? null };
+}
+
+const data = [
+  createData("00:00", 0),
+  createData("03:00", 300),
+  createData("06:00", 600),
+  createData("09:00", 800),
+  createData("12:00", 1500),
+  createData("15:00", 2000),
+  createData("18:00", 2400),
+  createData("21:00", 2400),
+  createData("24:00"),
+];
+
 const Chart = () => {
   const theme = useTheme();
-
-  function createData(time, amount) {
-    return { time, amount: amount ?? null };
-  }
-
-  const data = [
-    createData("00:00", 0),
-    createData("03:00", 300),
-    createData("06:00", 600),
-    createData("09:00", 800),
-    createData("12:00", 1500),
-    createData("15:00", 2000),
-    createData("18:00", 2400),
-    createData("21:00", 2400),
-    createData("24:00"),
-  ];
 
   return (
     <React.Fragment>
@@ -44,7 +44,7 @@ const Chart = () => {
           ]}
           yAxis={[
             {
-              label: 'Sales ($)',
+              label: "Sales ($)",
               labelStyle: {
                 ...theme.typography.body1,
                 fill: theme.palette.text.primary,
@@ -62,8 +62,12 @@ const Chart = () => {
             },
           ]}
           sx={{
-            [`.${axisClasses.root} line`]: { stroke: theme.palette.text.secondary },
-            [`.${axisClasses.root} text`]: { fill: theme.palette.text.secondary },
+            [`.${axisClasses.root} line`]: {
+              stroke: theme.palette.text.secondary,
+            },
+            [`.${axisClasses.root} text`]: {
+              fill: theme.palette.text.secondary,
+            },
             [`& .${axisClasses.left} .${axisClasses.label}`]: {
               transform: "translateX(-25x)",
             },

@@ -19,14 +19,12 @@ import {
   Paper,
   Link,
 } from "@mui/material";
-// import Sidebar from "../Sidebar/Sidebar";
+import Sidebar from "../Sidebar/Sidebar";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-// import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
-// import ContentArea from "../ContentArea/ContentArea";
-// import Chart from "../Chart/Chart";
-// import Chart from "./Chart";
-
+import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
+import ContentArea from "../ContentArea/ContentArea";
+import Deposits from "../Deposits/Deposits";
 const Copyright = (props) => {
   return (
     <Typography variant="body2" color="text.secondary" {...props}>
@@ -130,7 +128,19 @@ const DashboardLayout = () => {
                     height: 240,
                   }}
                 >
-                  <Chart/>
+                  <Chart />
+                </Paper>
+              </Grid>
+              <Grid item xs={12} md={4} lg={3}>
+                <Paper
+                  sx={{
+                    p: 2,
+                    display: "flex",
+                    flexDirection: "column",
+                    height: 240,
+                  }}
+                >
+                  <Deposits />
                 </Paper>
               </Grid>
             </Grid>
