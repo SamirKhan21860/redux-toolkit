@@ -24,9 +24,51 @@ const Chart = () => {
 
   return (
     <React.Fragment>
-      <Title>Title</Title>
+      <Title>Today</Title>
       <div style={{ width: "100%", flexGrow: 1, overflow: "hidden" }}>
-        <LineChart dataset={data} />
+        <LineChart
+          dataset={data}
+          margin={{
+            top: 16,
+            right: 20,
+            left: 70,
+            bottom: 30,
+          }}
+          xAxis={[
+            {
+              scaleType: "point",
+              dataKey: "time",
+              tickNumber: 2,
+              tickLabelStyle: theme.typography.body2,
+            },
+          ]}
+          yAxis={[
+            {
+              label: 'Sales ($)',
+              labelStyle: {
+                ...theme.typography.body1,
+                fill: theme.palette.text.primary,
+              },
+              tickLabelStyle: theme.typography.body2,
+              max: 2500,
+              tickNumber: 3,
+            },
+          ]}
+          series={[
+            {
+              dataKey: "amount",
+              showMark: false,
+              color: theme.palette.primary.light,
+            },
+          ]}
+          sx={{
+            [`.${axisClasses.root} line`]: { stroke: theme.palette.text.secondary },
+            [`.${axisClasses.root} text`]: { fill: theme.palette.text.secondary },
+            [`& .${axisClasses.left} .${axisClasses.label}`]: {
+              transform: "translateX(-25x)",
+            },
+          }}
+        />
       </div>
     </React.Fragment>
   );
