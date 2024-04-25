@@ -1,7 +1,7 @@
 import React from "react";
 import { useTheme } from "@mui/material/styles";
 import Title from "../Title/Title";
-import { LineChart } from "@mui/x-charts";
+import { LineChart, axisClasses } from "@mui/x-charts";
 
 const Chart = () => {
   const theme = useTheme();

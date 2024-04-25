@@ -2,6 +2,7 @@ import React from "react";
 import { styled, createTheme, ThemeProvider } from "@mui/material/styles";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import { mainListItems, secondaryListItems } from "../listItems/listItems";
+import Chart from "../Chart/Chart";
 import {
   AppBar,
   Toolbar,
@@ -16,14 +17,36 @@ import {
   Container,
   Grid,
   Paper,
+  Link,
 } from "@mui/material";
-import Sidebar from "../Sidebar/Sidebar";
+// import Sidebar from "../Sidebar/Sidebar";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
-import ContentArea from "../ContentArea/ContentArea";
-import Chart from "../Chart/Chart";
+// import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
+// import ContentArea from "../ContentArea/ContentArea";
+// import Chart from "../Chart/Chart";
 // import Chart from "./Chart";
+
+const Copyright = (props) => {
+  return (
+    <Typography variant="body2" color="text.secondary" {...props}>
+      {"Copyright ©"}
+      <Link color="inherit" href="https://mui.com/">
+        Your Website
+      </Link>{" "}
+      {new Date().getFullYear()}
+      {"."}
+    </Typography>
+  );
+};
+
+// const AppBar = styled();
+
+// const Drawer = styled();
+
+// const drawerWidth = 240;
+
+const defaultTheme = createTheme();
 
 const DashboardLayout = () => {
   const [open, setOpen] = React.useState(true);
@@ -31,8 +54,6 @@ const DashboardLayout = () => {
   const toggleDrawer = () => {
     setOpen(!open);
   };
-
-  const defaultTheme = createTheme();
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -84,12 +105,33 @@ const DashboardLayout = () => {
             {secondaryListItems}
           </List>
         </Drawer>
-        <Box>
+        <Box
+          component="main"
+          sx={{
+            backgroundColor: (theme) =>
+              theme.palette.mode === "light"
+                ? theme.palette.grey[100]
+                : theme.palette.grey[900],
+            flexGrow: 1,
+            height: "100vh",
+            overflow: "auto",
+          }}
+        >
           <Toolbar />
-          <Container>
-            <Grid>
-              <Grid>
-                <Paper></Paper>
+          <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+            <Grid container spacing={3}>
+              <Grid item xs={12} md={8} lg={9}>
+                <Paper
+                  sx={{
+                    p: 2,
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "end",
+                    height: 240,
+                  }}
+                >
+                  <Chart/>
+                </Paper>
               </Grid>
             </Grid>
           </Container>
