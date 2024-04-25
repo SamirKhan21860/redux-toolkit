@@ -4,10 +4,8 @@ import NotificationsIcon from "@mui/icons-material/Notifications";
 import { mainListItems, secondaryListItems } from "../listItems/listItems";
 import Chart from "../Chart/Chart";
 import {
-  AppBar,
   Toolbar,
   Typography,
-  Drawer,
   IconButton,
   Box,
   CssBaseline,
@@ -19,11 +17,10 @@ import {
   Paper,
   Link,
 } from "@mui/material";
-import Sidebar from "../Sidebar/Sidebar";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
-import ContentArea from "../ContentArea/ContentArea";
+import MuiAppBar from "@mui/material/AppBar";
+import MuiDrawer from "@mui/material/Drawer";
 import Deposits from "../Deposits/Deposits";
 import Orders from "../Orders/Orders";
 const Copyright = (props) => {
@@ -39,9 +36,49 @@ const Copyright = (props) => {
   );
 };
 
-const AppBar = styled();
+const AppBar = styled(MuiAppBar, {
+  shouldForwardProp: (prop) => prop !== "open",
+})(({ theme, open }) => ({
+  zIndex: theme.zIndex.drawer + 1,
+  transition: theme.transitions.create(["width", "margin"], {
+    easing: theme.transitions.easing.sharp,
+    duration: theme.transitions.duration.leavingScreen,
+  }),
+  ...(open && {
+    marginLeft: drawerWidth,
+    width: `calc(100% - ${drawerWidth}px)`,
+    transition: theme.transitions.create(["width", "margin"], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+  }),
+}));
 
-const Drawer = styled();
+const Drawer = styled(MuiDrawer, {
+  shouldForwardProp: (prop) => prop !== "open",
+})(({ theme, open }) => ({
+  "& .MuiDrawer-paper": {
+    position: "relative",
+    whiteSpace: "nowrap",
+    width: drawerWidth,
+    transition: theme.transitions.create("width", {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+    boxSizing: "border-box",
+    ...(!open && {
+      overflowX: "hidden",
+      transition: theme.transitions.create("width", {
+        easing: theme.transitions.easing.sharp,
+        duration: theme.transitions.duration.leavingScreen,
+      }),
+      width: theme.spacing(7),
+      [theme.breakpoints.up("sm")]: {
+        width: theme.spacing(9),
+      },
+    }),
+  },
+}));
 
 const drawerWidth = 240;
 
@@ -149,14 +186,14 @@ const DashboardLayout = () => {
                   sx={{
                     p: 2,
                     display: "flex",
-                    flexDirection: "column"
+                    flexDirection: "column",
                   }}
                 >
                   <Orders />
                 </Paper>
               </Grid>
             </Grid>
-            <Copyright sx={{ pt: 4}} />
+            <Copyright sx={{ pt: 4 }} />
           </Container>
         </Box>
       </Box>
