@@ -161,7 +161,7 @@ const DashboardLayout = () => {
                   sx={{
                     p: 2,
                     display: "flex",
-                    flexDirection: "row",
+                    flexDirection: "column",
                     alignItems: "end",
                     height: 240,
                   }}
