@@ -69,7 +69,7 @@ const Chart = () => {
               fill: theme.palette.text.secondary,
             },
             [`& .${axisClasses.left} .${axisClasses.label}`]: {
-              transform: "translateX(-25x)",
+              transform: "translateX(-25px)",
             },
           }}
         />
