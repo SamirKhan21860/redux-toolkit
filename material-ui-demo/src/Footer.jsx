@@ -1,3 +1,4 @@
+import { Typography } from "@mui/material";
 import React from "react";
 
 const Footer = () => {
@@ -8,7 +9,14 @@ const Footer = () => {
           backgroundColor: "#fcfcfc",
           padding: "50px",
         }}
-      >hi</footer>
+      >
+        <Typography variant="h6" align="center" >
+            Footer
+        </Typography>
+        <Typography variant="subtitle1" align="center">
+            Something here to give the footer a purpose!
+        </Typography>
+      </footer>
     </>
   );
 };
