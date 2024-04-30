@@ -13,6 +13,9 @@ import {
   CardContent,
 } from "@mui/material";
 import PhotoCameraIcon from "@mui/icons-material/PhotoCamera";
+import Footer from "./Footer";
+
+const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 const App = () => {
   return (
@@ -77,19 +80,20 @@ const App = () => {
         </div>
         <Container maxWidth="md" style={{ padding: "20px" }}>
           <Grid container spacing={4}>
-            <Grid item>
-              <Card
-                style={{
-                  height: "100%",
-                  display: "flex",
-                  flexDirection: "column",
-                }}
-              >
-                <CardMedia
-                  style={{ paddingTop: "56.25%" }}
-                  image="https://source.unsplash.com/random"
-                  title="image title"
+            {cards.map((card) => (
+              <Grid item key={card} xs={12} sm={6} md={4}>
+                <Card
+                  style={{
+                    height: "100%",
+                    display: "flex",
+                    flexDirection: "column",
+                  }}
                 >
+                  <CardMedia
+                    style={{ paddingTop: "56.25%" }}
+                    image="https://source.unsplash.com/random"
+                    title="image title"
+                  />
                   <CardContent style={{ flexGrow: 1 }}>
                     <Typography gutterBottom variant="h5">
                       Heading
@@ -107,12 +111,13 @@ const App = () => {
                       Exit
                     </Button>
                   </CardActions>
-                </CardMedia>
-              </Card>
-            </Grid>
+                </Card>
+              </Grid>
+            ))}
           </Grid>
         </Container>
       </main>
+      <Footer />
     </>
   );
 };
